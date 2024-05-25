@@ -1,6 +1,37 @@
+import { useEffect } from "react"
+import { useState } from "react"
 
 
 function Footer(){
+
+    const [showScroll,setShowScrool] = useState(false)
+
+    const checkScrollTop = () =>{
+        if(!showScroll && window.scrollY > 700){
+            setShowScrool(true)
+        }else if(showScroll && window.scrollY <= 700){
+            setShowScrool(false)
+        }
+    }
+
+    const scrollTop = () =>{
+        window.scrollTo({
+            top:0,
+            behavior:'smooth'
+        })
+    }
+
+
+    useEffect(()=>{
+        window.addEventListener('scroll',checkScrollTop)
+        return ()=>{
+            window.removeEventListener('scroll',checkScrollTop)
+        }
+    },[showScroll])
+
+
+
+
     return (
         <>
             <section className="footer">
@@ -50,7 +81,12 @@ function Footer(){
                 <h4>Copyright Gowtham Tirri.All rights reserved</h4>
                 <h4>Terms &amp; Use</h4>
                 <h4>Privacy Policy</h4>
-                <i id="scrolltp" className="fa fa-arrow-up" />
+                <i
+                 id="scrolltp" 
+                 className="fa fa-arrow-up" 
+                 onClick={scrollTop}
+                 style={{ opacity: showScroll ? 1 : 0 }}
+                 />
             </div>
             </section>
 
