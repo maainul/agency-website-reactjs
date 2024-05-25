@@ -560,6 +560,7 @@ svg {
 
 /* Footer */
 .footer {
+        background-image: url('./assets/footer-agency.png');
     padding-top: 50px;
     height: 100%;
     background-size: cover;
