@@ -1,10 +1,45 @@
+import { useEffect,useState } from "react"
+
+
+
 function HeaderComp(){
+
+    const [darkMode,setDarkMode] = useState(false)
+    
+    useEffect(()=>{
+        const savedDarkMode = localStorage.getItem('dark')
+        if (savedDarkMode){
+            setDarkMode(true)
+            document.body.classList.add('dark');
+        }
+    },[])
+
+     const handleToggle = () => {
+        if (darkMode) {
+            document.body.classList.remove('dark');
+            localStorage.removeItem('dark');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem('dark', 'active');
+        }
+        setDarkMode(!darkMode);
+    };
+
+
+
+
     return (
         <>
           <header>
                 <div className="navbar" >
                     <div className="theme">
-                        <input type="checkbox" name id="checkbox" className="checkbox" />
+                        <input 
+                        type="checkbox" 
+                        id="checkbox" 
+                        className="checkbox" 
+                        checked={darkMode}
+                        onChange={handleToggle}
+                        />
                         <label className="label" htmlFor="checkbox"><div className="ball" /></label>
                     </div>
                     <img src="images/logo.png" alt='logo' />
