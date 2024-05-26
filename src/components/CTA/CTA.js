@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom"
 
 
-function CTA(){
-    return(
+function CTA() {
+    return (
         <>
             <section class="cta container">
                 <div class="ctn-container">
@@ -10,7 +11,7 @@ function CTA(){
                             <h1>Get Connected With TechBees</h1>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                         </div>
-                        <a href="#" class="ctnBtn">Get Started</a>
+                        <Link href="#" class="ctnBtn">Get Started</Link>
                     </div>
                 </div>
             </section>
